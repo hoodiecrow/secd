@@ -77,15 +77,18 @@ int readOpcode() {
 
 int readNumber() {
     // take an input token, return an integer memory reference code
+    int sign;
     int n;
-    if (*sp == '-')
-        n = *sp-'0' * -1;
-    else
-        n = *sp-'0';
-
+    if (*sp == '-') {
+        sign = -1;
+        ++sp;
+    } else
+        sign = 1;
+    n = *sp-'0';
     while (isdigit(*++sp)) {
         n = 10 * n + *sp-'0';
     }
+    n *= sign;
     if (n >= 0 && n < 32)
         return n;
     else
