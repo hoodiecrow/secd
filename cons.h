@@ -9,4 +9,6 @@ void setcdr(int addr, int val);
 
 extern int mem[];
 
+extern int fp;
+
 #endif

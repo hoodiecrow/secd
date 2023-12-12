@@ -1,8 +1,6 @@
 #include "secd.h"
 #include "cons.h"
 
-int fp = BASE_CONS_CELL - 1;
-
 int car(int addr) {
     // take an address, return the car of the stored value
     if (addr < BASE_CONS_CELL) {

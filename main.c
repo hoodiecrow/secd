@@ -7,6 +7,7 @@
 int S, E, C, D;
 
 int mem[256];
+int fp;
 
 char *OPCODES[] = {
     "NIL", "T", "LD", "LDC", "ATOM", "NOT", "ADD", "SUB", "MUL", "DIV", "REM",
@@ -32,6 +33,7 @@ void resetMem() {
     for (int i = 32; i < 256; i++) {
         mem[i] = 0;
     }
+    fp = BASE_CONS_CELL - 1;
 }
 
 int locate(int p, int e) {
