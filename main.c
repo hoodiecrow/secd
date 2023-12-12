@@ -78,10 +78,10 @@ void runTransitions() {
                 S = cons(x, S);
                 break;
             case 4: // ATOM
-                setcar(S, car(S) > 0 && car(S) < BASE_CONS_CELL);
+                rplaca(S, car(S) > 0 && car(S) < BASE_CONS_CELL);
                 break;
             case 5: // NOT
-                setcar(S, !car(S));
+                rplaca(S, !car(S));
                 break;
             case 6: // ADD
                 a = car(S); S = cdr(S);
@@ -194,7 +194,7 @@ void runTransitions() {
                 S = 0;
                 C = f;
                 E = e;
-                setcar(E, v);
+                rplaca(E, v);
                 C = c;
                 break;
             case 26: // STOP

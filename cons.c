@@ -29,12 +29,12 @@ int cons(int a, int b) {
     return fp;
 }
 
-void setcar(int addr, int val) {
+void rplaca(int addr, int val) {
     // take an address and a value, modify the car of the stored value
     mem[addr] = (val << 8) | (mem[addr] & 0xff);
 }
 
-void setcdr(int addr, int val) {
+void rplacd(int addr, int val) {
     // take an address and a value, modify the cdr of the stored value
     mem[addr] = (mem[addr] & 0xff00) | (val & 0xff);
 }
