@@ -1,0 +1,1 @@
+(ldc 7 ldc 7 add ldc 40 sub stop)

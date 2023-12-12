@@ -1,0 +1,6 @@
+(LDC 7 LDC 5
+GT
+SEL
+[LDC 7 JOIN]  ; if 7 > 5
+[LDC 5 JOIN]  ; otherwise
+stop)
