@@ -1,6 +1,6 @@
 # secd
 
-A near-minimal implementation in C of P. J. Landin's 1964 virtual machine. 
+A near-minimal implementation in C of P. J. Landin's 1964 abstract virtual machine. 
 
 https://en.wikipedia.org/wiki/SECD_machine
 
@@ -15,3 +15,6 @@ The basic operations are supported, as well as NIL and T, and some more comparis
 
 ## Lisp support
 To support the machine, the following Lisp functions have been implemented: cons, car, cdr, rplaca (setf (car ...) ...), rplacd (setf (cdr ...) ...) (not actually used, but included for symmetry), print(value), print(pair), read(value), and read(pair).
+
+## See also
+https://github.com/zachallaun/secd: a richer implementation of the machine.
