@@ -7,7 +7,7 @@
 uint8_t S, E, C, D;
 
 int16_t mem[256];
-int16_t fp;
+uint8_t fp;
 
 char *OPCODES[] = {
     "NIL", "T", "LD", "LDC", "ATOM", "NOT", "ADD", "SUB", "MUL", "DIV", "REM",
@@ -30,23 +30,23 @@ void resetMem() {
         mem[i] = i;
     }
     // clear the big integer and cons cell parts of memory
-    for (int i = 32; i < 256; i++) {
+    for (int i = 32; i <= 255; i++) {
         mem[i] = 0;
     }
     fp = BASE_CONS_CELL - 1;
 }
 
-int locate(int p, int e) {
+uint8_t locate(uint8_t p, uint8_t e) {
     // take a packed pair of indices and an environment, return a variable value
-    int m = car(p);
-    int n = cdr(p);
+    uint8_t m = car(p);
+    uint8_t n = cdr(p);
     // e is a list of lists
-    for (int i = 1; i < m; i++) {
+    for (uint8_t i = 1; i < m; i++) {
         e = cdr(e);
     }
     e = car(e);
     // e is a list of values
-    for (int i = 1; i < n; i++) {
+    for (uint8_t i = 1; i < n; i++) {
         e = cdr(e);
     }
     return car(e);
@@ -54,12 +54,12 @@ int locate(int p, int e) {
 
 void runTransitions() {
     // execute the operations stored in C one by one
-    int a, b, x, ct, cf, f, v, c, e, p;
+    uint8_t a, b, x, ct, cf, f, v, c, e, p;
     for (;;) {
         if (C == 0) {
             return;
         }
-        int op = car(C);
+        uint8_t op = car(C);
         printf("Executing %s\n", OPCODES[op]);
         C = cdr(C);
         switch (op) {
@@ -242,12 +242,12 @@ void repl() {
     }
 }
 
-int compileScript(const char *source) {
+uint8_t compileScript(const char *source) {
     // take a source text pointer, print the source, compile it, print
     // the compiled source, and return a pointer to the compiled source.
     printf("Source code:\n%s\n\n", source);
     sp = source;
-    int c = readValue();
+    uint8_t c = readValue();
     printf("Compiled to:\n");
     printValue(c); printf("\n\n");
     return c;

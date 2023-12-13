@@ -1,7 +1,7 @@
 #include "secd.h"
 #include "int.h"
 
-int getIntVal(int addr) {
+int16_t getIntVal(uint8_t addr) {
     // take a memory reference, return an integer value
     if (addr < 32)
         return addr;
@@ -13,13 +13,13 @@ int getIntVal(int addr) {
     }
 }
 
-int storeInt(int val) {
+uint8_t storeInt(int16_t val) {
     // take an integer value, return a memory reference that recalls it
     if (0 <= val && val < 32)
         return val;
     else {
         // traverse int-space to find an equal value to return, or allocate a new int
-        for (int addr = 32; addr < BASE_CONS_CELL; addr++) {
+        for (uint8_t addr = 32; addr < BASE_CONS_CELL; addr++) {
             if (mem[addr] == val)
                 return addr;
             else if (mem[addr] == 0) {
