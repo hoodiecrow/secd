@@ -111,22 +111,22 @@ void runTransitions() {
             case 11: // GT
                 a = car(S); S = cdr(S);
                 b = car(S); S = cdr(S);
-                S = cons(storeInt(getIntVal(b) > getIntVal(a)), S);
+                S = cons(getIntVal(b) > getIntVal(a), S);
                 break;
             case 12: // GEQ
                 a = car(S); S = cdr(S);
                 b = car(S); S = cdr(S);
-                S = cons(storeInt(getIntVal(b) >= getIntVal(a)), S);
+                S = cons(getIntVal(b) >= getIntVal(a), S);
                 break;
             case 13: // LT
                 a = car(S); S = cdr(S);
                 b = car(S); S = cdr(S);
-                S = cons(storeInt(getIntVal(b) < getIntVal(a)), S);
+                S = cons(getIntVal(b) < getIntVal(a), S);
                 break;
             case 14: // LEQ
                 a = car(S); S = cdr(S);
                 b = car(S); S = cdr(S);
-                S = cons(storeInt(getIntVal(b) <= getIntVal(a)), S);
+                S = cons(getIntVal(b) <= getIntVal(a), S);
                 break;
             case 15: // EQ
                 a = car(S); S = cdr(S);
@@ -206,13 +206,13 @@ void runTransitions() {
                     if (mem[i] != 0)
                         nint++;
                 }
-                int cint = 0;
+                int ncons = 0;
                 for (int i = BASE_CONS_CELL; i < 256; i++) {
                     if (mem[i] != 0)
-                        cint++;
+                        ncons++;
                 }
                 printf("%d integers stored\n", nint);
-                printf("%d cells consed\n", cint);
+                printf("%d cells consed\n", ncons);
                 resetVM();
                 return;
             case 27: // SWAP
