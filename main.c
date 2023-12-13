@@ -4,10 +4,10 @@
 #include "int.h"
 #include "print.h"
 
-int S, E, C, D;
+uint8_t S, E, C, D;
 
-int mem[256];
-int fp;
+int16_t mem[256];
+int16_t fp;
 
 char *OPCODES[] = {
     "NIL", "T", "LD", "LDC", "ATOM", "NOT", "ADD", "SUB", "MUL", "DIV", "REM",

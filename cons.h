@@ -7,8 +7,8 @@ int cons(int a, int b);
 void rplaca(int addr, int val);
 void rplacd(int addr, int val);
 
-extern int mem[];
+extern int16_t mem[];
 
-extern int fp;
+extern int16_t fp;
 
 #endif

@@ -4,6 +4,6 @@
 int getIntVal(int addr);
 int storeInt(int val);
 
-extern int mem[];
+extern int16_t mem[];
 
 #endif
