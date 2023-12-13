@@ -27,7 +27,7 @@ T:   S  E  T.C  D  -->  1.S  E  C  D
 
 LD (load variable):
 
-S  E  (LD p.C)  D  -->  (locate(p, E))  E  C  D
+S  E  (LD p.C)  D  -->  (locate(p, E))  E  C  D  -- where p is an (int . int) pair forming an index into the environment
 
 LDC (load constant):
 
