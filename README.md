@@ -27,17 +27,79 @@ T:   S  E  T.C  D  -->  1.S  E  C  D
 
 LD (load variable):
 
-S  E  (LD p.C)  E  -->  (locate(p, E))  E  C  D
+S  E  (LD p.C)  D  -->  (locate(p, E))  E  C  D
 
 LDC (load constant):
 
-S  E  (LDC x.C)  E  -->  x.S  E  C  D
+S  E  (LDC x.C)  D  -->  x.S  E  C  D
 
 ATOM (atomicity predicate):
 
-x.S  E  ATOM.C  E  -->  t.S  E  C  D -- where t is 1 if x is an atom, otherwise 0
+x.S  E  ATOM.C  D  -->  t.S  E  C  D -- where t is 1 if x is an atom, otherwise 0
 
+NOT (logical negation):
 
+x.S  E  NOT.C  D  -->  t.S  E  C  D   -- where t is 1 if x is 0, otherwise 0
+
+ADD, SUB, MUL, DIV, REM, GT, GEQ, LT, LEQ, EQ (arithmetic and comparison operators):
+
+(x y.S)  E  op.C  D  -->  (y op x).S  E  C  D
+
+CAR (car operation):
+
+(a.b).S  E  CAR.C  D  -->  a.S  E  C  D
+
+CDR (cdr operation):
+
+(a.b).S  E  CDR.C  D  -->  b.S  E  C  D
+
+CONS (cons operation):
+
+(a b.S)  E  CONS.C  D  -->  (a.b).S  E  C  D
+
+SEL (selection branching):
+
+x.S  E  (SEL ct cf.C)  D  -->  S  E  cx  C.D  -- where cx is ct if x is true, otherwise cf
+
+JOIN (end branching):
+
+S  E  JOIN.c  C.D  -->  S  E  C  D
+
+LDF (load closure):
+
+S  E  (LDF f.C)  D  -->  (f.E).S  E  C  D
+
+AP (apply function):
+
+((f.e) v.S)  E  AP.C  D  -->  0  (v.e)  f  (S E C.D)
+
+RTN (return):
+
+x.s  e  RTN.c  (S E C.D)  -->  x.S  E  C  D
+
+DUM (insert dummy layer in environment):
+
+S  E  DUM.C  D  -->  S  0.E  C  D
+
+RAP (apply recursive function):
+
+(f.(0.E)) v.S)  0.E  RAP.C  D  -->  0  rplaca((0.E), v)  f  (S E C.D) -- where rplaca changes the car of the pair, inserting v
+
+STOP (stop execution):
+
+Just stop and report the value on the top of the stack, as well as the number of ints and conses stored during execution.
+
+SWAP (swap values):
+
+(a b.S)  E  SWAP.C  D  -->  (b a.S) E  C  D
+
+UNCONS (undo cons cell):
+
+((a.b).S)  E  UNCONS.C  D  -->  (a b.S)  E  C  D
+
+DUP (duplicate top value):
+
+x.S  E  DUP.C  D  -->  (x x.S)  E  C  D
 
 ## See also
 - https://github.com/zachallaun/secd: a richer implementation of the machine.
