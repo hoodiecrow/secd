@@ -17,7 +17,7 @@ The basic operations are supported, as well as NIL and T, and some more comparis
 To support the machine, the following Lisp functions have been implemented: cons, car, cdr, rplaca (setf (car ...) ...), rplacd (setf (cdr ...) ...) (not actually used, but included for symmetry), print(value), print(pair), read(value), and read(pair).
 
 ## See also
--https://github.com/zachallaun/secd: a richer implementation of the machine.
--https://pqnelson.github.io/org-notes/comp-sci/abstract-machines/secd.html
--https://poincare.matf.bg.ac.rs/~smalkov//files/old/fp.r344.2016/public/predavanja/FP.cas.2016.08.SECD.pdf
--https://prism.ucalgary.ca/items/4f3ffa11-cc24-4ce6-b42b-6a54020d2ede: this one was my main reference.
+- https://github.com/zachallaun/secd: a richer implementation of the machine.
+- https://pqnelson.github.io/org-notes/comp-sci/abstract-machines/secd.html
+- https://poincare.matf.bg.ac.rs/~smalkov//files/old/fp.r344.2016/public/predavanja/FP.cas.2016.08.SECD.pdf
+- https://prism.ucalgary.ca/items/4f3ffa11-cc24-4ce6-b42b-6a54020d2ede: this one was my main reference.
