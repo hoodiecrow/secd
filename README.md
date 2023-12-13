@@ -19,10 +19,25 @@ To support the machine, the following Lisp functions have been implemented: cons
 ## Operations
 Operations are described in terms of the register transitions they cause.
 
-NIL s  e  NIL.c  d  -->  0.s  e  c  d
+NIL: S  E  NIL.C  D  -->  0.S  E  C  D
+
 I.e. pop the NIL opcode off the control register and push 0 onto the stack.
 
-T   s  e  T.c  d  -->  1.s  e  c  d
+T:   S  E  T.C  D  -->  1.S  E  C  D
+
+LD (load variable):
+
+S  E  (LD p.C)  E  -->  (locate(p, E))  E  C  D
+
+LDC (load constant):
+
+S  E  (LDC x.C)  E  -->  x.S  E  C  D
+
+ATOM (atomicity predicate):
+
+x.S  E  ATOM.C  E  -->  t.S  E  C  D -- where t is 1 if x is an atom, otherwise 0
+
+
 
 ## See also
 - https://github.com/zachallaun/secd: a richer implementation of the machine.
