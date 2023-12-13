@@ -13,8 +13,16 @@ The machine can be run using a script in a file, which it executes and then exit
 
 The basic operations are supported, as well as NIL and T, and some more comparison operators (GT, LT, GEQ), and a couple of utility operations like SWAP (swaps the two values on the top of the stack), UNCONS (splits a cons into two values on the top of the stack) and DUP (duplicates the top value on the stack). A small script repository is in the directory `scripts`. The scripts are rudimentary and mostly pointless other than as an illustration of execution.
 
-## Lisp support
+### Lisp support
 To support the machine, the following Lisp functions have been implemented: cons, car, cdr, rplaca (setf (car ...) ...), rplacd (setf (cdr ...) ...) (not actually used, but included for symmetry), print(value), print(pair), read(value), and read(pair).
+
+## Operations
+Operations are described in terms of the register transitions they cause.
+
+NIL s  e  NIL.c  d  -->  0.s  e  c  d
+I.e. pop the NIL opcode off the control register and push 0 onto the stack.
+
+T   s  e  T.c  d  -->  1.s  e  c  d
 
 ## See also
 - https://github.com/zachallaun/secd: a richer implementation of the machine.
