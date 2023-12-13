@@ -201,6 +201,18 @@ void runTransitions() {
                 printf("Stopping, result is: ");
                 printValue(car(S));
                 printf("\n");
+                int nint = 0;
+                for (int i = 32; i < BASE_CONS_CELL; i++) {
+                    if (mem[i] != 0)
+                        nint++;
+                }
+                int cint = 0;
+                for (int i = BASE_CONS_CELL; i < 256; i++) {
+                    if (mem[i] != 0)
+                        cint++;
+                }
+                printf("%d integers stored\n", nint);
+                printf("%d cells consed\n", cint);
                 resetVM();
                 return;
             case 27: // SWAP
